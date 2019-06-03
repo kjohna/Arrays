@@ -8,25 +8,24 @@ char *day_1_array_tests()
     mu_assert(arr->count == 0, "Create failed");
     mu_assert(arr->capacity == 3, "Create failed");
 
-    mu_assert(arr_read(arr, 0) == NULL, "Value initialized not null");
+    // mu_assert(arr_read(arr, 0) == NULL, "Value initialized not null");
 
-    arr_append(arr, "VALUE-1");
+    // arr_append(arr, "VALUE-1");
 
-    mu_assert(strcmp(arr_read(arr, 0), "VALUE-1") == 0, "Append value failed");
-    mu_assert(arr_read(arr, 1) == NULL, "Append value failed");
-    mu_assert(arr->count == 1, "Append value failed");
+    // mu_assert(strcmp(arr_read(arr, 0), "VALUE-1") == 0, "Append value failed");
+    // mu_assert(arr_read(arr, 1) == NULL, "Append value failed");
+    // mu_assert(arr->count == 1, "Append value failed");
 
-    arr_append(arr, "VALUE-2");
+    // arr_append(arr, "VALUE-2");
 
-    mu_assert(strcmp(arr_read(arr, 1), "VALUE-2") == 0, "Append value failed");
-    mu_assert(arr_read(arr, 2) == NULL, "Should throw index error");
-    mu_assert(arr->count == 2, "Append value failed");
+    // mu_assert(strcmp(arr_read(arr, 1), "VALUE-2") == 0, "Append value failed");
+    // mu_assert(arr_read(arr, 2) == NULL, "Should throw index error");
+    // mu_assert(arr->count == 2, "Append value failed");
 
-    destroy_array(arr);
+    // destroy_array(arr);
 
     return NULL;
 }
-
 
 char *day_2_array_tests()
 {
@@ -66,15 +65,12 @@ char *day_2_array_tests()
     return NULL;
 }
 
-
-
-
 char *all_tests()
 {
     mu_suite_start();
 
     mu_run_test(day_1_array_tests);
-    mu_run_test(day_2_array_tests);
+    // mu_run_test(day_2_array_tests);
 
     return NULL;
 }
