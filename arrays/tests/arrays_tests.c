@@ -16,11 +16,11 @@ char *day_1_array_tests()
     mu_assert(arr_read(arr, 1) == NULL, "Append value failed");
     mu_assert(arr->count == 1, "Append value failed");
 
-    // arr_append(arr, "VALUE-2");
+    arr_append(arr, "VALUE-2");
 
-    // mu_assert(strcmp(arr_read(arr, 1), "VALUE-2") == 0, "Append value failed");
-    // mu_assert(arr_read(arr, 2) == NULL, "Should throw index error");
-    // mu_assert(arr->count == 2, "Append value failed");
+    mu_assert(strcmp(arr_read(arr, 1), "VALUE-2") == 0, "Append value failed");
+    mu_assert(arr_read(arr, 2) == NULL, "Should throw index error");
+    mu_assert(arr->count == 2, "Append value failed");
 
     destroy_array(arr);
 

@@ -84,18 +84,17 @@ void resize_array(Array *arr)
  *****/
 char *arr_read(Array *arr, int index)
 {
-
+  char *rv = NULL;
   // Throw an error if the index is greater or equal to than the current count
   if (index >= arr->count)
   {
     printf("Error, index out of range.\n");
-    exit(-1);
+    return rv;
   }
 
   // Otherwise, return the element at the given index
-  char *rv;
   rv = arr->elements[index];
-  return *rv;
+  return rv;
 }
 
 /*****
@@ -142,7 +141,8 @@ void arr_append(Array *arr, char *element)
   // or throw an error if resize isn't implemented yet.
 
   // Copy the element and add it to the end of the array
-  arr->elements[arr->count + 1] = strdup(*element);
+  char *copy = strdup(element);
+  arr->elements[arr->count] = copy;
   // Increment count by 1
   arr->count++;
 }
