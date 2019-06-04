@@ -94,7 +94,7 @@ char *arr_read(Array *arr, int index)
   // Throw an error if the index is greater or equal to than the current count
   if (index >= arr->count)
   {
-    printf("Error, index out of range.\n");
+    fprintf(stderr, "Error, index out of range.\n");
     return rv;
   }
 
@@ -114,7 +114,7 @@ void arr_insert(Array *arr, char *element, int index)
   // Throw an error if the index is greater than the current count
   if (index > arr->count)
   {
-    printf("Error, index beyond final element.");
+    fprintf(stderr, "Error, index beyond final element.");
     exit(-1);
   }
   // Resize the array if the number of elements is over capacity
@@ -167,7 +167,6 @@ void arr_remove(Array *arr, char *element)
   int i, deleted = 0;
   for (i = 0; i < arr->count; i++)
   {
-    char *elem = arr->elements[i];
     if (!strcmp(arr->elements[i], element))
     {
       free(arr->elements[i]);
