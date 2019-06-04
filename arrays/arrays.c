@@ -62,7 +62,7 @@ void resize_array(Array *arr)
   // Copy elements into the new storage
   for (int i = 0; i < arr->capacity; i++)
   {
-    *new_elements[0] = *arr->elements[0];
+    new_elements[i] = arr->elements[i];
   }
   // Free the old elements array (but NOT the strings they point to)
   free(arr->elements);
@@ -105,26 +105,26 @@ char *arr_read(Array *arr, int index)
 void arr_insert(Array *arr, char *element, int index)
 {
 
-  // // Throw an error if the index is greater than the current count
-  // if (index > arr->count)
-  // {
-  //   printf("Error, index out of range.");
-  //   exit(-1);
-  // }
-  // // Resize the array if the number of elements is over capacity
-  // if (arr->count == arr->capacity - 1)
-  // {
-  //   resize_array(arr);
-  // }
-  // // Move every element after the insert index to the right one position
-  // for (int i = 0; i < arr->count; i++)
-  // {
-  //   arr->elements[arr->count - i + 1] = arr->elements[arr->count - i];
-  // }
-  // // Copy the element (hint: use `strdup()`) and add it to the array
-  // arr->elements[0] = strdup(*element);
-  // // Increment count by 1
-  // arr->count++;
+  // Throw an error if the index is greater than the current count
+  if (index > arr->count)
+  {
+    printf("Error, index beyond final element.");
+    exit(-1);
+  }
+  // Resize the array if the number of elements is over capacity
+  if (arr->count == arr->capacity)
+  {
+    resize_array(arr);
+  }
+  // Move every element after the insert index to the right one position
+  for (int i = 0; i < arr->count - index; i++)
+  {
+    arr->elements[arr->count - i] = arr->elements[arr->count - i - 1];
+  }
+  // Copy the element (hint: use `strdup()`) and add it to the array
+  arr->elements[index] = strdup(element);
+  // Increment count by 1
+  arr->count++;
 }
 
 /*****
